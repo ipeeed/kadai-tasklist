@@ -1,0 +1,29 @@
+<h1>ユーザー登録</h1>
+
+<div>
+  <%= form_with(model: @user, local: true) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+  
+    <%= f.label :name, '名前' %>
+    <%= f.text_field :name %>
+    <%= f.label :email, 'メール' %>
+    <%= f.email_field :email %>
+    <%= f.label :password, 'パスワード' %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation, 'パスワード確認' %>
+    <%= f.password_field :password_confirmation %>
+    
+    <%= f.submit 'ユーザー登録' %>
+  <% end %>
+</div>
+
+<%= link_to 'ログイン', new_session_path %>
